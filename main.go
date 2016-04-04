@@ -7,7 +7,7 @@ import (
 	"runtime"
 	"time"
 )
-
+/* Locked thread error > LockOSThread wires the calling goroutine to its current operating system thread */
 func init() {
 	runtime.LockOSThread()
 }
@@ -64,7 +64,7 @@ func getPosition(pos int32, clicPos int32, speed float64, coef float64, ratio fl
 func main() {
 	sdl.Init(sdl.INIT_EVERYTHING)
 
-	window, err := sdl.CreateWindow("test", sdl.WINDOWPOS_UNDEFINED, sdl.WINDOWPOS_UNDEFINED,
+	window, err := sdl.CreateWindow("MovingSquareBasic", sdl.WINDOWPOS_UNDEFINED, sdl.WINDOWPOS_UNDEFINED,
 		800, 600, sdl.WINDOW_SHOWN)
 	if err != nil {
 		panic(err)
@@ -106,7 +106,7 @@ func main() {
 				if t.Type == sdl.MOUSEBUTTONUP {
 					var coord Coord
 					var breaker string
-					/*You can even prepare a move array*/
+
 					action = true
 					ic.XClic = t.X - (rect.W / 2)
 					ic.YClic = t.Y - (rect.W / 2)
@@ -135,7 +135,7 @@ func main() {
 						}
 						coord.Y = append(coord.Y, y)
 					}
-					/**/
+					
 					for k, _ := range coord.X {
 						rect.X = coord.X[k]
 						if len(coord.Y) > k {
